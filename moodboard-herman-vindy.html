@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herman & Vindy — Heavenly Reverie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #E8E3DD;
+    --latte: #BDA896;
+    --cream: #E2DDD4;
+    --mocha: #A37E66;
+    --umber: #8C7466;
+    --gold: #C9A96E;
+    --gold-light: #E8D5A3;
+    --deep: #2a1f1a;
+    --warm-black: #1a1310;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-black);
+    color: var(--ivory);
+    font-family: 'EB Garamond', serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(201,169,110,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease;
+  }
+
+  /* === COVER PAGE === */
+  .cover {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 60%, #2d1f15 0%, #130d09 60%, #0a0806 100%);
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 30% 50%, rgba(201,169,110,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 40%, rgba(189,168,150,0.04) 0%, transparent 50%);
+    animation: breathe 6s ease-in-out infinite alternate;
+  }
+
+  @keyframes breathe {
+    from { opacity: 0.6; }
+    to { opacity: 1; }
+  }
+
+  /* Floating particles */
+  .particle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: var(--gold-light);
+    border-radius: 50%;
+    animation: float-up linear infinite;
+    opacity: 0;
+  }
+
+  @keyframes float-up {
+    0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-10vh) translateX(20px); opacity: 0; }
+  }
+
+  .cover-ornament {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 8px;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 40px;
+    animation: fadeUp 1.5s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+  }
+
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(64px, 10vw, 120px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 0.9;
+    text-align: center;
+    color: var(--ivory);
+    animation: fadeUp 1.5s ease forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
+    letter-spacing: -1px;
+  }
+
+  .cover-title span {
+    color: var(--gold);
+    font-weight: 300;
+  }
+
+  .cover-divider {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 32px auto;
+    animation: fadeUp 1.5s ease forwards;
+    animation-delay: 0.9s;
+    opacity: 0;
+  }
+
+  .cover-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--latte);
+    text-align: center;
+    animation: fadeUp 1.5s ease forwards;
+    animation-delay: 1.1s;
+    opacity: 0;
+    line-height: 2;
+  }
+
+  .cover-theme {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: rgba(201,169,110,0.6);
+    margin-top: 48px;
+    letter-spacing: 2px;
+    animation: fadeUp 1.5s ease forwards;
+    animation-delay: 1.4s;
+    opacity: 0;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeUp 1.5s ease forwards;
+    animation-delay: 2s;
+    opacity: 0;
+  }
+
+  .scroll-hint span {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 4px;
+    color: var(--mocha);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === SECTION LABEL === */
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    opacity: 0.7;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 300;
+    font-style: italic;
+    text-align: center;
+    color: var(--ivory);
+    margin-bottom: 60px;
+    line-height: 1;
+  }
+
+  /* === COLOR PALETTE SECTION === */
+  .palette-section {
+    padding: 120px 60px;
+    background: linear-gradient(180deg, #0a0806 0%, #120d0a 100%);
+    position: relative;
+  }
+
+  .palette-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,169,110,0.3), transparent);
+  }
+
+  .palette-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .palette-grid {
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+    margin-top: 20px;
+  }
+
+  .palette-swatch {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .palette-swatch.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .swatch-bar {
+    width: 100%;
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+  }
+
+  .palette-swatch:hover .swatch-bar {
+    transform: scaleY(1.05);
+  }
+
+  .swatch-hex {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--latte);
+  }
+
+  .swatch-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ivory);
+    opacity: 0.6;
+  }
+
+  /* === MOODBOARD SECTIONS === */
+  .mb-section {
+    padding: 100px 60px;
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .mb-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 60px; right: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,169,110,0.15), transparent);
+  }
+
+  /* Grid layouts */
+  .grid-hero {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: 400px 280px;
+    gap: 16px;
+  }
+
+  .grid-hero .img-wrap:first-child {
+    grid-row: 1 / 3;
+  }
+
+  .grid-trio {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 16px;
+    height: 480px;
+  }
+
+  .grid-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    height: 500px;
+  }
+
+  .grid-asymmetric {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+    height: 420px;
+  }
+
+  .grid-single {
+    height: 560px;
+  }
+
+  .grid-quad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    height: 380px;
+  }
+
+  .grid-feature {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 16px;
+    height: 520px;
+  }
+
+  /* Image wrapper */
+  .img-wrap {
+    position: relative;
+    overflow: hidden;
+    background: #1a1310;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .img-wrap.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
+    filter: brightness(0.88) saturate(0.9);
+  }
+
+  .img-wrap:hover img {
+    transform: scale(1.06);
+    filter: brightness(0.95) saturate(1.05);
+  }
+
+  /* Image overlay */
+  .img-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,169,110,0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Image label */
+  .img-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px 20px 16px;
+    background: linear-gradient(0deg, rgba(10,8,6,0.85) 0%, transparent 100%);
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .img-wrap:hover .img-label {
+    opacity: 1;
+  }
+
+  .img-label span {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--gold-light);
+  }
+
+  /* Section caption */
+  .section-caption {
+    margin-top: 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .caption-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+    margin-top: 12px;
+    flex-shrink: 0;
+  }
+
+  .caption-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--latte);
+    line-height: 1.8;
+    opacity: 0.8;
+  }
+
+  /* === FULL WIDTH DIVIDER === */
+  .full-divider {
+    width: 100%;
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    background: linear-gradient(180deg, #0a0806, #0d0a07, #0a0806);
+  }
+
+  .divider-ornament {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    opacity: 0.5;
+    letter-spacing: 3px;
+  }
+
+  .divider-line {
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.3;
+  }
+
+  /* === FLOOR PLAN === */
+  .floorplan-section {
+    padding: 100px 60px;
+    background: #0d0a07;
+    position: relative;
+  }
+
+  .floorplan-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .floorplan-img {
+    border: 1px solid rgba(201,169,110,0.15);
+    padding: 20px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .floorplan-img img {
+    width: 100%;
+    opacity: 0.85;
+    filter: sepia(20%) brightness(0.9);
+  }
+
+  .floorplan-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ivory);
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+
+  .floorplan-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .detail-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(201,169,110,0.1);
+  }
+
+  .detail-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    opacity: 0.7;
+    min-width: 80px;
+    padding-top: 2px;
+  }
+
+  .detail-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--latte);
+    line-height: 1.6;
+  }
+
+  /* === SANGJIT SECTION === */
+  .sangjit-section {
+    padding: 100px 60px;
+    background: linear-gradient(135deg, #1a0f0a 0%, #120a07 50%, #1a100b 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sangjit-section::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(139,75,40,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* === CLOSING === */
+  .closing {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at 50% 50%, #1e1108 0%, #080604 100%);
+    position: relative;
+  }
+
+  .closing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,169,110,0.05) 0%, transparent 50%);
+  }
+
+  .closing-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(18px, 2.5vw, 26px);
+    color: var(--ivory);
+    opacity: 0.7;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    padding: 0 40px;
+  }
+
+  .closing-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: -1px;
+  }
+
+  .closing-date {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--latte);
+    opacity: 0.6;
+    margin-top: 16px;
+  }
+
+  /* Transition delays for stagger */
+  .img-wrap:nth-child(1) { transition-delay: 0s; }
+  .img-wrap:nth-child(2) { transition-delay: 0.1s; }
+  .img-wrap:nth-child(3) { transition-delay: 0.2s; }
+  .img-wrap:nth-child(4) { transition-delay: 0.3s; }
+
+  .palette-swatch:nth-child(1) { transition-delay: 0s; }
+  .palette-swatch:nth-child(2) { transition-delay: 0.1s; }
+  .palette-swatch:nth-child(3) { transition-delay: 0.2s; }
+  .palette-swatch:nth-child(4) { transition-delay: 0.3s; }
+  .palette-swatch:nth-child(5) { transition-delay: 0.4s; }
+
+  /* Grain overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.4;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .grid-hero, .grid-trio, .grid-duo, .grid-asymmetric, .grid-quad, .grid-feature {
+      grid-template-columns: 1fr;
+      height: auto;
+    }
+    .grid-hero .img-wrap:first-child { grid-row: auto; }
+    .img-wrap { height: 280px; }
+    .floorplan-inner { grid-template-columns: 1fr; }
+    .palette-grid { flex-wrap: wrap; }
+    .mb-section, .palette-section { padding: 60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Floating particles -->
+<script>
+  for(let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `
+      left: ${Math.random()*100}%;
+      width: ${Math.random()*2+1}px;
+      height: ${Math.random()*2+1}px;
+      animation-duration: ${Math.random()*15+10}s;
+      animation-delay: ${Math.random()*10}s;
+    `;
+    document.querySelector('.cover') && document.body.appendChild(p);
+  }
+</script>
+
+<!-- ====== COVER ====== -->
+<section class="cover">
+  <div class="cover-ornament">✦ THE WEDDING OF ✦</div>
+  <div class="cover-title">
+    Herman<br><span>&</span> Vindy
+  </div>
+  <div class="cover-divider"></div>
+  <div class="cover-sub">
+    12 – 13 NOVEMBER 2026<br>
+    GRAND MERCURE BATAM
+  </div>
+  <div class="cover-theme">— Heavenly Reverie —</div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ====== COLOR PALETTE ====== -->
+<section class="palette-section">
+  <div class="palette-inner">
+    <div class="section-label">✦ THE ESSENCE ✦</div>
+    <div class="section-title">Color Palette</div>
+    <div class="palette-grid">
+      <div class="palette-swatch">
+        <div class="swatch-bar" style="height:180px; background:#E8E3DD;"></div>
+        <div class="swatch-hex">#E8E3DD</div>
+        <div class="swatch-name">Ivory Mist</div>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-bar" style="height:150px; background:#BDA896;"></div>
+        <div class="swatch-hex">#BDA896</div>
+        <div class="swatch-name">Warm Latte</div>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-bar" style="height:160px; background:#E2DDD4;"></div>
+        <div class="swatch-hex">#E2DDD4</div>
+        <div class="swatch-name">Gardenia</div>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-bar" style="height:130px; background:#A37E66;"></div>
+        <div class="swatch-hex">#A37E66</div>
+        <div class="swatch-name">Clay Rose</div>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-bar" style="height:110px; background:#8C7466;"></div>
+        <div class="swatch-hex">#8C7466</div>
+        <div class="swatch-name">Umber Dusk</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== OVERALL VENUE ====== -->
+<div style="background:#0a0806; padding: 100px 60px;">
+  <div style="max-width:1400px; margin:0 auto;">
+    <div class="section-label">✦ THE ATMOSPHERE ✦</div>
+    <div class="section-title">Overall Venue</div>
+    <div class="grid-hero">
+      <div class="img-wrap">
+        <img src="/mnt/user-data/uploads/01.jpg" alt="Overall Venue">
+        <div class="img-label"><span>VENUE OVERVIEW</span></div>
+      </div>
+      <div class="img-wrap">
+        <img src="/mnt/user-data/uploads/02.jpg" alt="Candlelight">
+        <div class="img-label"><span>CANDLELIGHT DINING</span></div>
+      </div>
+      <div class="img-wrap">
+        <img src="/mnt/user-data/uploads/04.jpg" alt="Stage Aisle">
+        <div class="img-label"><span>AISLE TO STAGE</span></div>
+      </div>
+    </div>
+    <div class="section-caption">
+      <div class="caption-line"></div>
+      <div class="caption-text">Ivory drapery cascading from above, soft candlelight flickering through the room, cherubs quietly watching over a night filled with love and devotion.</div>
+    </div>
+  </div>
+</div>
+
+<div class="full-divider">
+  <div class="divider-line"></div>
+  <div class="divider-ornament">✦ ✦ ✦</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ====== STAGE ====== -->
+<div style="background:#0d0a07; padding: 100px 60px;">
+  <div style="max-width:1400px; margin:0 auto;">
+    <div class="section-label">✦ THE HEART ✦</div>
+    <div class="section-title">Stage & Backdrop</div>
+    <div class="grid-duo">
+      <div class="img-wrap">
+        <img src="/mnt/user-data/uploads/06.jpg" alt="Stage Decor">
+        <div class="img-label"><span>STAGE ARRANGEMENT</span></div>
+      </div>
+      <div class="img-wrap">
+        <img src="/mnt/user-data/uploads/08.jpg" alt="Table Centerpiece">
+        <div class="img-label"><span>FLORAL CENTERPIECE</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== HALLWAY ====== -->
+<div style="background:#0a0806; padding: 100px 60px;">
+  <div style="max-width:1400px; margin:0 auto;">
+    <div class="section-label">✦ THE JOURNEY ✦</div>
+    <div class="section-title">Hallway & Entrance</div>
+    <div class="grid-trio">
+      <div class="img-wrap">
+        <img src="/mnt/user-data/uploads/12.jfif" alt="Hallway Candles">
+        <div class="img-label"><span>CANDLELIT HALL</span></div>
+      </div>
+      <div class="img-wrap">
+        <img src="/mnt/user-data/uploads/13.jfif" alt="Ivory Hallway">
+        <div class="img-label"><span>IVORY CORRIDOR</span></div>
+      </div>
+      <div class="img-wrap">
+        <img src="/mnt/user-data/uploads/09.jpg" alt="Chandelier Hall">
+        <div class="img-label"><span>CRYSTAL CHANDELIER</span></div>
+      </div>
+    </div>
+    <div class="section-caption">
+      <div class="caption-line"></div>
+      <div class="caption-text">A corridor of dreams — draped in ivory silk, lit by a thousand candles, crowned by crystal chandeliers that scatter light like fallen stars.</div>
+    </div>
+  </div>
+</div>
+
+<div class="full-divider">
+  <div class="divider-line"></div>
+  <div class="divider-ornament">✦ ✦ ✦</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ====== GAZEBO ====== -->
+<div style="background:#0d0a07; padding: 100px 60px;">
+  <div style="max-width:1400px; margin:0 auto;">
+    <div class="section-label">✦ THE GATE ✦</div>
+    <div class="section-title">Gazebo & Arch</div>
+    <div class="grid-single">
+      <div class="img-wrap" style="height:100%;">
+        <img src="/mnt/user-data/uploads/07.jpg" alt="Gazebo Arch">
+        <div class="img-label"><span>ENTRANCE ARCH</span></div>
+      </div>
+    </div>
+    <div class="section-caption">
+      <div class="caption-line"></div>
+      <div class="caption-text">Taupe silk drapes frame white blooms — an archway between the ordinary world and the heavenly one you are about to enter.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== ORNAMENT & PHOTOBOOTH ====== -->
+<div style="background:#0a0806; padding: 100px 60px;">
+  <div style="max-width:1400px; margin:0 auto;">
+    <div class="section-label">✦ THE DETAILS ✦</div>
+    <div class="section-title">Ornament & Photobooth</div>
+    <div class="grid-feature">
+      <div class="img-wrap">
+        <img src="/mnt/user-data/uploads/15.jfif" alt="Angel Ornament">
+        <div class="img-label"><span>ANGELIC ORNAMENT</span></div>
+      </div>
+      <div class="img-wrap">
+        <img src="/mnt/user-data/uploads/05.jpg" alt="Wedding Cake">
+        <div class="img-label"><span>WEDDING CAKE</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== PHOTO GALLERY ====== -->
+<div style="background:#0d0a07; padding: 100px 60px;">
+  <div style="max-width:1400px; margin:0 auto;">
+    <div class="section-label">✦ THE MEMORIES ✦</div>
+    <div class="section-title">Photo Gallery</div>
+    <div class="grid-single">
+      <div class="img-wrap" style="height:100%;">
+        <img src="/mnt/user-data/uploads/16.png" alt="Photo Gallery">
+        <div class="img-label"><span>ARCHED GALLERY WALL</span></div>
+      </div>
+    </div>
+    <div class="section-caption">
+      <div class="caption-line"></div>
+      <div class="caption-text">Arched alcoves bloom with baby's breath, cradling portraits of your love story — each frame a window into the moments that led to this day.</div>
+    </div>
+  </div>
+</div>
+
+<div class="full-divider">
+  <div class="divider-line"></div>
+  <div class="divider-ornament">✦ ✦ ✦</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ====== HAND BOUQUET ====== -->
+<div style="background:#0a0806; padding: 100px 60px;">
+  <div style="max-width:1400px; margin:0 auto;">
+    <div class="section-label">✦ THE BRIDE ✦</div>
+    <div class="section-title">Hand Bouquet</div>
+    <div class="grid-asymmetric" style="grid-template-columns: 1fr 2fr;">
+      <div class="img-wrap">
+        <img src="/mnt/user-data/uploads/10.jpg" alt="White Peony Bouquet">
+        <div class="img-label"><span>WHITE PEONY</span></div>
+      </div>
+      <div style="display:flex; flex-direction:column; justify-content:center; padding-left:60px;">
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:48px; font-weight:300; color:var(--ivory); line-height:1.1; margin-bottom:24px;">
+          Pure white<br>peonies
+        </div>
+        <div style="font-family:'EB Garamond',serif; font-size:15px; color:var(--latte); line-height:1.9; opacity:0.8; max-width:400px;">
+          Softly rounded, ivory-white peonies wrapped in silk ribbon — 
+          a bouquet as gentle and full of grace as the bride who carries it.
+          Simple. Pure. Unforgettable.
+        </div>
+        <div style="margin-top:40px; display:flex; gap:32px;">
+          <div>
+            <div style="font-family:'Cinzel',serif; font-size:8px; letter-spacing:3px; color:var(--gold); opacity:0.6; margin-bottom:8px;">FLOWER</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--ivory); opacity:0.7;">White Peony</div>
+          </div>
+          <div>
+            <div style="font-family:'Cinzel',serif; font-size:8px; letter-spacing:3px; color:var(--gold); opacity:0.6; margin-bottom:8px;">ACCENT</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--ivory); opacity:0.7;">Baby's Breath</div>
+          </div>
+          <div>
+            <div style="font-family:'Cinzel',serif; font-size:8px; letter-spacing:3px; color:var(--gold); opacity:0.6; margin-bottom:8px;">WRAP</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--ivory); opacity:0.7;">Ivory Silk</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== FLOOR PLAN ====== -->
+<section class="floorplan-section">
+  <div class="floorplan-inner">
+    <div>
+      <div class="section-label" style="text-align:left;">✦ THE BLUEPRINT ✦</div>
+      <div class="section-title" style="text-align:left; margin-bottom:0;">Venue Layout</div>
+      <div class="floorplan-detail">
+        <div class="detail-row">
+          <div class="detail-label">VENUE</div>
+          <div class="detail-value">Rarantira 2, Grand Mercure Batam</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">DATE</div>
+          <div class="detail-value">12 – 13 November 2026</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">STAGE</div>
+          <div class="detail-value">Center front with main aisle walkway</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">CAPACITY</div>
+          <div class="detail-value">±200 pax, intimate round table seating</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">POINTS</div>
+          <div class="detail-value">Stage · Walkway · Photobooth · Signage</div>
+        </div>
+      </div>
+    </div>
+    <div class="floorplan-img">
+      <img src="/mnt/user-data/uploads/14.png" alt="Floor Plan">
+    </div>
+  </div>
+</section>
+
+<!-- ====== SANGJIT ====== -->
+<section class="sangjit-section">
+  <div style="max-width:1400px; margin:0 auto;">
+    <div class="section-label">✦ THE TRADITION ✦</div>
+    <div class="section-title">Sangjit</div>
+    <div class="grid-single" style="height:580px;">
+      <div class="img-wrap" style="height:100%;">
+        <img src="/mnt/user-data/uploads/11.jpg" alt="Sangjit">
+        <div class="img-label"><span>CHINESE WEDDING CEREMONY</span></div>
+      </div>
+    </div>
+    <div class="section-caption">
+      <div class="caption-line"></div>
+      <div class="caption-text">Where ancient tradition meets timeless love — the sacred Sangjit ceremony, rich in red and gold, blessing the union of two families becoming one.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CLOSING ====== -->
+<section class="closing">
+  <div class="closing-quote">
+    "Ivory drapery cascading from above, soft candlelight flickering through the room, 
+    cherubs quietly watching over a night filled with love and devotion."
+  </div>
+  <div class="closing-names">Herman & Vindy</div>
+  <div class="closing-date">12 · 13 NOVEMBER 2026 · GRAND MERCURE BATAM</div>
+  <div style="margin-top:40px; font-family:'Cinzel',serif; font-size:9px; letter-spacing:4px; color:var(--gold); opacity:0.4;">HEAVENLY REVERIE</div>
+</section>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('.img-wrap').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      ring.style.width = '60px';
+      ring.style.height = '60px';
+    });
+    el.addEventListener('mouseleave', () => {
+      ring.style.width = '32px';
+      ring.style.height = '32px';
+    });
+  });
+
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.img-wrap, .palette-swatch').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Generate particles on cover
+  const cover = document.querySelector('.cover');
+  for(let i = 0; i < 40; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `
+      left: ${Math.random()*100}%;
+      width: ${Math.random()*2+0.5}px;
+      height: ${Math.random()*2+0.5}px;
+      animation-duration: ${Math.random()*20+10}s;
+      animation-delay: -${Math.random()*20}s;
+    `;
+    cover.appendChild(p);
+  }
+</script>
+</body>
+</html>
