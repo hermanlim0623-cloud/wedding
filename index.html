@@ -248,52 +248,22 @@
     margin: 0 auto;
   }
 
-  .palette-grid {
-    display: flex;
-    gap: 24px;
-    align-items: stretch;
+  .palette-img-wrap {
     margin-top: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(201,169,110,0.12);
   }
 
-  .palette-swatch {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-
-  .palette-swatch.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .swatch-bar {
+  .palette-img-wrap img {
     width: 100%;
-    border-radius: 2px;
-    transition: transform 0.3s ease;
+    display: block;
+    filter: brightness(0.97) saturate(0.95);
+    transition: filter 0.4s ease;
   }
 
-  .palette-swatch:hover .swatch-bar {
-    transform: scaleY(1.05);
-  }
-
-  .swatch-hex {
-    font-family: 'Cinzel', serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--latte);
-  }
-
-  .swatch-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 13px;
-    color: var(--ivory);
-    opacity: 0.6;
+  .palette-img-wrap:hover img {
+    filter: brightness(1) saturate(1);
   }
 
   /* === MOODBOARD SECTIONS === */
@@ -621,12 +591,6 @@
   .img-wrap:nth-child(3) { transition-delay: 0.2s; }
   .img-wrap:nth-child(4) { transition-delay: 0.3s; }
 
-  .palette-swatch:nth-child(1) { transition-delay: 0s; }
-  .palette-swatch:nth-child(2) { transition-delay: 0.1s; }
-  .palette-swatch:nth-child(3) { transition-delay: 0.2s; }
-  .palette-swatch:nth-child(4) { transition-delay: 0.3s; }
-  .palette-swatch:nth-child(5) { transition-delay: 0.4s; }
-
   /* Grain overlay */
   body::after {
     content: '';
@@ -647,7 +611,6 @@
     .grid-hero .img-wrap:first-child { grid-row: auto; }
     .img-wrap { height: 280px; }
     .floorplan-inner { grid-template-columns: 1fr; }
-    .palette-grid { flex-wrap: wrap; }
     .mb-section, .palette-section { padding: 60px 24px; }
   }
 </style>
@@ -700,70 +663,8 @@
   <div class="palette-inner">
     <div class="section-label">✦ THE ESSENCE ✦</div>
     <div class="section-title">Color Palette</div>
-    <div class="palette-grid" style="flex-direction:column; gap:0; border-radius:6px; overflow:hidden;">
-
-      <!-- 50% Rose Taupe -->
-      <div class="palette-swatch" style="flex-direction:row; align-items:center; gap:0; width:100%; border-radius:0;">
-        <div class="swatch-bar" style="width:100%; height:120px; background:#a38a7f; border-radius:0; flex-shrink:0;"></div>
-        <div style="position:absolute; left:0; right:0; display:flex; align-items:center; justify-content:space-between; padding:0 28px; pointer-events:none;">
-        </div>
-      </div>
-      <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 28px 18px; background:transparent;">
-        <div style="display:flex; align-items:center; gap:16px;">
-          <div class="swatch-hex" style="font-size:11px; opacity:0.7;">Rose Taupe</div>
-          <div class="swatch-name" style="font-size:11px;">(warna kain kami)</div>
-        </div>
-        <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--gold); opacity:0.8;">50%</div>
-      </div>
-
-      <!-- 25% Ivory -->
-      <div class="palette-swatch" style="flex-direction:row; align-items:center; gap:0; width:100%; border-radius:0;">
-        <div class="swatch-bar" style="width:100%; height:60px; background:#EEE6D9; border-radius:0;"></div>
-      </div>
-      <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 28px 18px; background:transparent;">
-        <div style="display:flex; align-items:center; gap:16px;">
-          <div class="swatch-hex" style="font-size:11px; opacity:0.7;">#EEE6D9</div>
-          <div class="swatch-name" style="font-size:11px;">Ivory</div>
-        </div>
-        <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--gold); opacity:0.8;">25%</div>
-      </div>
-
-      <!-- 15% Beige -->
-      <div class="palette-swatch" style="flex-direction:row; align-items:center; gap:0; width:100%; border-radius:0;">
-        <div class="swatch-bar" style="width:100%; height:36px; background:#CEBFAA; border-radius:0;"></div>
-      </div>
-      <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 28px 18px; background:transparent;">
-        <div style="display:flex; align-items:center; gap:16px;">
-          <div class="swatch-hex" style="font-size:11px; opacity:0.7;">#CEBFAA</div>
-          <div class="swatch-name" style="font-size:11px;">Beige</div>
-        </div>
-        <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--gold); opacity:0.8;">15%</div>
-      </div>
-
-      <!-- 7% Soft Taupe -->
-      <div class="palette-swatch" style="flex-direction:row; align-items:center; gap:0; width:100%; border-radius:0;">
-        <div class="swatch-bar" style="width:100%; height:18px; background:#B39E85; border-radius:0;"></div>
-      </div>
-      <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 28px 18px; background:transparent;">
-        <div style="display:flex; align-items:center; gap:16px;">
-          <div class="swatch-hex" style="font-size:11px; opacity:0.7;">#B39E85</div>
-          <div class="swatch-name" style="font-size:11px;">Soft Taupe</div>
-        </div>
-        <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--gold); opacity:0.8;">7%</div>
-      </div>
-
-      <!-- 3% Dark Mocha -->
-      <div class="palette-swatch" style="flex-direction:row; align-items:center; gap:0; width:100%; border-radius:0;">
-        <div class="swatch-bar" style="width:100%; height:8px; background:#8A6C5F; border-radius:0;"></div>
-      </div>
-      <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 28px 0; background:transparent;">
-        <div style="display:flex; align-items:center; gap:16px;">
-          <div class="swatch-hex" style="font-size:11px; opacity:0.7;">#8A6C5F</div>
-          <div class="swatch-name" style="font-size:11px;">Dusty Cocoa</div>
-        </div>
-        <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--gold); opacity:0.8;">3%</div>
-      </div>
-
+    <div class="palette-img-wrap">
+      <img src="./assets/color_palate.jpg" alt="Color Palette — Heavenly Reverie">
     </div>
   </div>
 </section>
@@ -839,7 +740,7 @@
     </div>
     <div class="section-caption">
       <div class="caption-line"></div>
-      <div class="caption-text">A corridor of dreams  draped in ivory silk, lit by a thousand candles, crowned by crystal chandeliers that scatter light like fallen stars.</div>
+      <div class="caption-text">A corridor of dreams draped in ivory silk, lit by a thousand candles, crowned by crystal chandeliers that scatter light like fallen stars.</div>
     </div>
   </div>
 </div>
@@ -863,7 +764,7 @@
     </div>
     <div class="section-caption">
       <div class="caption-line"></div>
-      <div class="caption-text">Taupe silk drapes frame white blooms  an archway between the ordinary world and the heavenly one you are about to enter.</div>
+      <div class="caption-text">Taupe silk drapes frame white blooms — an archway between the ordinary world and the heavenly one you are about to enter.</div>
     </div>
   </div>
 </div>
@@ -899,7 +800,7 @@
     </div>
     <div class="section-caption">
       <div class="caption-line"></div>
-      <div class="caption-text">Arched alcoves bloom with baby's breath, cradling portraits of your love story  each frame a window into the moments that led to this day.</div>
+      <div class="caption-text">Arched alcoves bloom with baby's breath, cradling portraits of your love story — each frame a window into the moments that led to this day.</div>
     </div>
   </div>
 </div>
@@ -925,7 +826,7 @@
           Pure white<br>peonies
         </div>
         <div style="font-family:'EB Garamond',serif; font-size:15px; color:var(--latte); line-height:1.9; opacity:0.8; max-width:400px;">
-          Softly rounded, ivory-white peonies wrapped in silk ribbon  
+          Softly rounded, ivory-white peonies wrapped in silk ribbon —
           a bouquet as gentle and full of grace as the bride who carries it.
           Simple. Pure. Unforgettable.
         </div>
@@ -996,7 +897,7 @@
     </div>
     <div class="section-caption">
       <div class="caption-line"></div>
-      <div class="caption-text">Where ancient tradition meets timeless love  the sacred Sangjit ceremony, rich in red and gold, blessing the union of two families becoming one.</div>
+      <div class="caption-text">Where ancient tradition meets timeless love — the sacred Sangjit ceremony, rich in red and gold, blessing the union of two families becoming one.</div>
     </div>
   </div>
 </section>
@@ -1053,7 +954,7 @@
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-  document.querySelectorAll('.img-wrap, .palette-swatch').forEach(el => {
+  document.querySelectorAll('.img-wrap').forEach(el => {
     observer.observe(el);
   });
 
