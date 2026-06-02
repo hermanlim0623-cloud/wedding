@@ -367,15 +367,65 @@
     pointer-events: none; z-index: 100; opacity: 0.4;
   }
 
+  /* Section wrapper utility */
+  .section-wrap { padding: 100px 60px; }
+
+  /* Hand Bouquet content classes */
+  .bouquet-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 16px; height: 420px; }
+  .bouquet-content { display: flex; flex-direction: column; justify-content: center; padding-left: 60px; }
+  .bouquet-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 48px; font-weight: 300; color: var(--ivory); line-height: 1.1; margin-bottom: 24px; }
+  .bouquet-desc { font-family: 'EB Garamond', serif; font-size: 15px; color: var(--latte); line-height: 1.9; opacity: 0.8; max-width: 400px; }
+  .bouquet-tags { margin-top: 40px; display: flex; gap: 32px; flex-wrap: wrap; }
+  .bouquet-tag-label { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 3px; color: var(--gold); opacity: 0.6; margin-bottom: 8px; }
+  .bouquet-tag-value { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ivory); opacity: 0.7; }
+
   @media (max-width: 768px) {
-    .grid-hero, .grid-trio, .grid-duo, .grid-asymmetric, .grid-quad, .grid-feature, .floral-grid {
-      grid-template-columns: 1fr; height: auto;
+    /* Hide custom cursor on touch devices */
+    .cursor, .cursor-ring { display: none; }
+    body { cursor: auto; }
+
+    /* All grids collapse to single column */
+    .grid-hero, .grid-trio, .grid-duo, .grid-asymmetric,
+    .grid-quad, .grid-feature, .floral-grid, .bouquet-layout {
+      grid-template-columns: 1fr !important;
+      height: auto !important;
     }
     .grid-hero .img-wrap:first-child { grid-row: auto; }
-    .img-wrap { height: 280px; }
-    .floorplan-inner { grid-template-columns: 1fr; }
-    .mb-section, .palette-section, .floral-section { padding: 60px 24px; }
-    .concept-box { padding: 28px 24px; }
+    .img-wrap { height: 260px; }
+    .grid-single { height: 280px; }
+
+    /* Section padding */
+    .section-wrap { padding: 60px 20px; }
+    .mb-section, .palette-section, .floral-section,
+    .floorplan-section, .sangjit-section { padding: 60px 20px; }
+
+    /* Floor plan */
+    .floorplan-inner { grid-template-columns: 1fr; gap: 40px; }
+
+    /* Concept box */
+    .concept-box { padding: 24px 20px; }
+
+    /* Hand bouquet */
+    .bouquet-content { padding-left: 0; padding-top: 24px; }
+    .bouquet-title { font-size: clamp(28px, 8vw, 40px); }
+
+    /* Cover */
+    .cover-theme div:first-child { font-size: 16px !important; }
+    .cover-theme div:last-child { font-size: 10px !important; }
+
+    /* Floral */
+    .floral-description { font-size: 14px; margin-bottom: 40px; }
+
+    /* Caption */
+    .section-caption { flex-direction: column; gap: 12px; }
+    .caption-line { width: 24px; margin-top: 0; }
+
+    /* Divider */
+    .full-divider { padding: 48px 0; }
+
+    /* Closing */
+    .closing { height: auto; padding: 80px 24px; }
+    .closing-quote { font-size: clamp(15px, 4vw, 20px); padding: 0 16px; }
   }
 </style>
 </head>
@@ -448,7 +498,7 @@
 </section>
 
 <!-- ====== OVERALL VENUE ====== -->
-<div style="background:#0a0806; padding: 100px 60px;">
+<div style="background:#0a0806;" class="section-wrap">
   <div style="max-width:1400px; margin:0 auto;">
     <div class="section-label">✦ THE ATMOSPHERE ✦</div>
     <div class="section-title">Overall Venue</div>
@@ -476,7 +526,7 @@
 </div>
 
 <!-- ====== STAGE ====== -->
-<div style="background:#0d0a07; padding: 100px 60px;">
+<div style="background:#0d0a07;" class="section-wrap">
   <div style="max-width:1400px; margin:0 auto;">
     <div class="section-label">✦ THE HEART ✦</div>
     <div class="section-title">Stage & Backdrop</div>
@@ -538,7 +588,7 @@
 </div>
 
 <!-- ====== HALLWAY ====== -->
-<div style="background:#0a0806; padding: 100px 60px;">
+<div style="background:#0a0806;" class="section-wrap">
   <div style="max-width:1400px; margin:0 auto;">
     <div class="section-label">✦ THE JOURNEY ✦</div>
     <div class="section-title">Hallway & Entrance</div>
@@ -570,7 +620,7 @@
 </div>
 
 <!-- ====== AISLE & GAZEBO ====== -->
-<div style="background:#0d0a07; padding: 100px 60px;">
+<div style="background:#0d0a07;" class="section-wrap">
   <div style="max-width:1400px; margin:0 auto;">
     <div class="section-label">✦ THE PASSAGE ✦</div>
     <div class="section-title">Aisle & Gazebo</div>
@@ -592,7 +642,7 @@
 </div>
 
 <!-- ====== SIGNAGE ====== -->
-<div style="background:#0a0806; padding: 100px 60px;">
+<div style="background:#0a0806;" class="section-wrap">
   <div style="max-width:1400px; margin:0 auto;">
     <div class="section-label">✦ THE WELCOME ✦</div>
     <div class="section-title">Signage</div>
@@ -614,7 +664,7 @@
 </div>
 
 <!-- ====== PHOTOBOOTH ====== -->
-<div style="background:#0a0806; padding: 100px 60px;">
+<div style="background:#0a0806;" class="section-wrap">
   <div style="max-width:1400px; margin:0 auto;">
     <div class="section-label">✦ THE MOMENT ✦</div>
     <div class="section-title">Photobooth</div>
@@ -640,7 +690,7 @@
 </div>
 
 <!-- ====== PHOTO GALLERY ====== -->
-<div style="background:#0d0a07; padding: 100px 60px;">
+<div style="background:#0d0a07;" class="section-wrap">
   <div style="max-width:1400px; margin:0 auto;">
     <div class="section-label">✦ THE MEMORIES ✦</div>
     <div class="section-title">Photo Gallery</div>
@@ -664,36 +714,34 @@
 </div>
 
 <!-- ====== HAND BOUQUET ====== -->
-<div style="background:#0a0806; padding: 100px 60px;">
+<div style="background:#0a0806;" class="section-wrap">
   <div style="max-width:1400px; margin:0 auto;">
     <div class="section-label">✦ THE BRIDE ✦</div>
     <div class="section-title">Hand Bouquet</div>
-    <div class="grid-asymmetric" style="grid-template-columns: 1fr 2fr;">
+    <div class="bouquet-layout">
       <div class="img-wrap">
         <img src="./assets/10.webp" alt="White Peony Bouquet">
         <div class="img-label"><span>WHITE PEONY</span></div>
       </div>
-      <div style="display:flex; flex-direction:column; justify-content:center; padding-left:60px;">
-        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:48px; font-weight:300; color:var(--ivory); line-height:1.1; margin-bottom:24px;">
-          Pure white<br>peonies
-        </div>
-        <div style="font-family:'EB Garamond',serif; font-size:15px; color:var(--latte); line-height:1.9; opacity:0.8; max-width:400px;">
-          Softly rounded, ivory-white peonies wrapped in silk ribbon 
+      <div class="bouquet-content">
+        <div class="bouquet-title">Pure white<br>peonies</div>
+        <div class="bouquet-desc">
+          Softly rounded, ivory-white peonies wrapped in silk ribbon —
           a bouquet as gentle and full of grace as the bride who carries it.
           Simple. Pure. Unforgettable.
         </div>
-        <div style="margin-top:40px; display:flex; gap:32px;">
+        <div class="bouquet-tags">
           <div>
-            <div style="font-family:'Cinzel',serif; font-size:8px; letter-spacing:3px; color:var(--gold); opacity:0.6; margin-bottom:8px;">FLOWER</div>
-            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--ivory); opacity:0.7;">White Peony</div>
+            <div class="bouquet-tag-label">FLOWER</div>
+            <div class="bouquet-tag-value">White Peony</div>
           </div>
           <div>
-            <div style="font-family:'Cinzel',serif; font-size:8px; letter-spacing:3px; color:var(--gold); opacity:0.6; margin-bottom:8px;">ACCENT</div>
-            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--ivory); opacity:0.7;">Baby's Breath</div>
+            <div class="bouquet-tag-label">ACCENT</div>
+            <div class="bouquet-tag-value">Baby's Breath</div>
           </div>
           <div>
-            <div style="font-family:'Cinzel',serif; font-size:8px; letter-spacing:3px; color:var(--gold); opacity:0.6; margin-bottom:8px;">WRAP</div>
-            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--ivory); opacity:0.7;">Ivory Silk</div>
+            <div class="bouquet-tag-label">WRAP</div>
+            <div class="bouquet-tag-value">N Pearl</div>
           </div>
         </div>
       </div>
@@ -732,24 +780,6 @@
     </div>
     <div class="floorplan-img">
       <img src="./assets/14.png" alt="Floor Plan">
-    </div>
-  </div>
-</section>
-
-<!-- ====== SANGJIT ====== -->
-<section class="sangjit-section">
-  <div style="max-width:1400px; margin:0 auto;">
-    <div class="section-label">✦ THE TRADITION ✦</div>
-    <div class="section-title">Sangjit</div>
-    <div class="grid-single" style="height:580px;">
-      <div class="img-wrap" style="height:100%;">
-        <img src="./assets/11.jpg" alt="Sangjit">
-        <div class="img-label"><span>CHINESE WEDDING CEREMONY</span></div>
-      </div>
-    </div>
-    <div class="section-caption">
-      <div class="caption-line"></div>
-      <div class="caption-text">Where ancient tradition meets timeless love — the sacred Sangjit ceremony, rich in red and gold, blessing the union of two families becoming one.</div>
     </div>
   </div>
 </section>
