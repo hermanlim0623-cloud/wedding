@@ -159,6 +159,7 @@
     color: rgba(201,169,110,0.6);
     margin-top: 48px;
     letter-spacing: 2px;
+    text-align: center;
     animation: fadeUp 1.5s ease forwards;
     animation-delay: 1.4s;
     opacity: 0;
@@ -681,7 +682,10 @@
     12 – 13 NOVEMBER 2026<br>
     GRAND MERCURE BATAM
   </div>
-  <div class="cover-theme"> Heavenly Reverie </div>
+  <div class="cover-theme" style="text-align:center;">
+    <div style="font-size:22px; letter-spacing:3px; opacity:0.85; margin-bottom:8px;">Heavenly Reverie</div>
+    <div style="font-size:12px; letter-spacing:4px; opacity:0.5; font-style:italic;">Draped in Love & Candlelight</div>
+  </div>
   <div class="scroll-hint">
     <span>SCROLL</span>
     <div class="scroll-line"></div>
@@ -693,32 +697,70 @@
   <div class="palette-inner">
     <div class="section-label">✦ THE ESSENCE ✦</div>
     <div class="section-title">Color Palette</div>
-    <div class="palette-grid">
-      <div class="palette-swatch">
-        <div class="swatch-bar" style="height:180px; background:#E8E3DD;"></div>
-        <div class="swatch-hex">#E8E3DD</div>
-        <div class="swatch-name">Ivory Mist</div>
+    <div class="palette-grid" style="flex-direction:column; gap:0; border-radius:6px; overflow:hidden;">
+
+      <!-- 50% Warm Taupe Drapery -->
+      <div class="palette-swatch" style="flex-direction:row; align-items:center; gap:0; width:100%; border-radius:0;">
+        <div class="swatch-bar" style="width:100%; height:120px; background:#B5A090; border-radius:0; flex-shrink:0;"></div>
+        <div style="position:absolute; left:0; right:0; display:flex; align-items:center; justify-content:space-between; padding:0 28px; pointer-events:none;">
+        </div>
       </div>
-      <div class="palette-swatch">
-        <div class="swatch-bar" style="height:150px; background:#BDA896;"></div>
-        <div class="swatch-hex">#BDA896</div>
-        <div class="swatch-name">Warm Latte</div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 28px 18px; background:transparent;">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div class="swatch-hex" style="font-size:11px; opacity:0.7;">Warm Taupe Drapery</div>
+          <div class="swatch-name" style="font-size:11px;">(warna kain kami)</div>
+        </div>
+        <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--gold); opacity:0.8;">50%</div>
       </div>
-      <div class="palette-swatch">
-        <div class="swatch-bar" style="height:160px; background:#E2DDD4;"></div>
-        <div class="swatch-hex">#E2DDD4</div>
-        <div class="swatch-name">Gardenia</div>
+
+      <!-- 25% Ivory -->
+      <div class="palette-swatch" style="flex-direction:row; align-items:center; gap:0; width:100%; border-radius:0;">
+        <div class="swatch-bar" style="width:100%; height:60px; background:#EEE6D9; border-radius:0;"></div>
       </div>
-      <div class="palette-swatch">
-        <div class="swatch-bar" style="height:130px; background:#A37E66;"></div>
-        <div class="swatch-hex">#A37E66</div>
-        <div class="swatch-name">Clay Rose</div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 28px 18px; background:transparent;">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div class="swatch-hex" style="font-size:11px; opacity:0.7;">#EEE6D9</div>
+          <div class="swatch-name" style="font-size:11px;">Ivory</div>
+        </div>
+        <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--gold); opacity:0.8;">25%</div>
       </div>
-      <div class="palette-swatch">
-        <div class="swatch-bar" style="height:110px; background:#8C7466;"></div>
-        <div class="swatch-hex">#8C7466</div>
-        <div class="swatch-name">Umber Dusk</div>
+
+      <!-- 15% Beige -->
+      <div class="palette-swatch" style="flex-direction:row; align-items:center; gap:0; width:100%; border-radius:0;">
+        <div class="swatch-bar" style="width:100%; height:36px; background:#CEBFAA; border-radius:0;"></div>
       </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 28px 18px; background:transparent;">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div class="swatch-hex" style="font-size:11px; opacity:0.7;">#CEBFAA</div>
+          <div class="swatch-name" style="font-size:11px;">Beige</div>
+        </div>
+        <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--gold); opacity:0.8;">15%</div>
+      </div>
+
+      <!-- 7% Soft Taupe -->
+      <div class="palette-swatch" style="flex-direction:row; align-items:center; gap:0; width:100%; border-radius:0;">
+        <div class="swatch-bar" style="width:100%; height:18px; background:#B39E85; border-radius:0;"></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 28px 18px; background:transparent;">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div class="swatch-hex" style="font-size:11px; opacity:0.7;">#B39E85</div>
+          <div class="swatch-name" style="font-size:11px;">Soft Taupe</div>
+        </div>
+        <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--gold); opacity:0.8;">7%</div>
+      </div>
+
+      <!-- 3% Dark Mocha -->
+      <div class="palette-swatch" style="flex-direction:row; align-items:center; gap:0; width:100%; border-radius:0;">
+        <div class="swatch-bar" style="width:100%; height:8px; background:#795739; border-radius:0;"></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 28px 0; background:transparent;">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div class="swatch-hex" style="font-size:11px; opacity:0.7;">#795739</div>
+          <div class="swatch-name" style="font-size:11px;">Dark Mocha</div>
+        </div>
+        <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px; color:var(--gold); opacity:0.8;">3%</div>
+      </div>
+
     </div>
   </div>
 </section>
