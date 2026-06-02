@@ -178,6 +178,65 @@
     height: 520px;
   }
 
+  /* CONCEPT NOTES */
+  .concept-box {
+    margin-top: 48px;
+    padding: 44px 52px;
+    border: 1px solid rgba(201,169,110,0.2);
+    background: rgba(201,169,110,0.04);
+    border-radius: 4px;
+  }
+  .concept-box-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px; letter-spacing: 5px;
+    color: var(--gold); opacity: 0.8;
+    margin-bottom: 16px;
+  }
+  .concept-box-summary {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-style: italic;
+    color: var(--ivory); line-height: 1.85;
+    opacity: 0.9; margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(201,169,110,0.12);
+  }
+  .concept-box-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 9px; letter-spacing: 4px;
+    color: var(--gold); opacity: 0.65;
+    margin-bottom: 24px;
+  }
+  .concept-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .concept-item {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(201,169,110,0.08);
+  }
+  .concept-item:last-child { border-bottom: none; }
+  .concept-num {
+    font-family: 'Cinzel', serif;
+    font-size: 10px; letter-spacing: 1px;
+    color: var(--gold); opacity: 0.5;
+    min-width: 24px; padding-top: 2px;
+  }
+  .concept-item-inner { flex: 1; }
+  .concept-item-title {
+    font-family: 'Cinzel', serif;
+    font-size: 9px; letter-spacing: 3px;
+    color: var(--latte); margin-bottom: 8px;
+  }
+  .concept-item-desc {
+    font-family: 'EB Garamond', serif;
+    font-size: 15px; color: var(--ivory);
+    opacity: 0.72; line-height: 1.85;
+  }
+
   /* MOODBOARD */
   .mb-section {
     padding: 100px 60px; position: relative;
@@ -334,6 +393,7 @@
     .img-wrap { height: 280px; }
     .floorplan-inner { grid-template-columns: 1fr; }
     .mb-section, .palette-section, .floral-section { padding: 60px 24px; }
+    .concept-box { padding: 28px 24px; }
   }
 </style>
 </head>
@@ -385,8 +445,8 @@
     <div class="section-title">Floral Vision</div>
     <p class="floral-description">
       A dreamy arrangement of white, ivory, and cream blooms, designed to evoke softness, romance, and timeless elegance.
-            <br><br>
-            We prefer lush floral compositions with little to no visible greenery.
+      <br><br>
+      We prefer lush floral compositions with little to no visible greenery.
     </p>
     <div class="floral-grid">
       <div class="img-wrap">
@@ -452,9 +512,54 @@
         <div class="img-label"><span>STAGE FULL VIEW</span></div>
       </div>
     </div>
+
+    <!-- CONCEPT NOTES -->
+    <div class="concept-box">
+      <div class="concept-box-label">✦ CONCEPT NOTES ✦</div>
+      <div class="concept-box-summary">
+        A high-end, dramatic classic-modern design focusing on heavy, multilayered backdrop drapery.
+      </div>
+      <div class="concept-box-subtitle">KEY ORNAMENTS & ELEMENTS</div>
+      <div class="concept-items">
+
+        <div class="concept-item">
+          <div class="concept-num">01</div>
+          <div class="concept-item-inner">
+            <div class="concept-item-title">BACKDROP DRAPERY — THE CORE STRUCTURE</div>
+            <div class="concept-item-desc">A full-coverage backdrop featuring dense, high-quality fabric with a neat, heavy drape (such as premium heavy satin, velvet, or silk-textured fabric) in warm taupe / nude / champagne tones.</div>
+          </div>
+        </div>
+
+        <div class="concept-item">
+          <div class="concept-num">02</div>
+          <div class="concept-item-inner">
+            <div class="concept-item-title">ABUNDANT CANDLES</div>
+            <div class="concept-item-desc">An extensive arrangement of candles placed along the stage floor — a lot of candles, creating a warm, flickering glow across the entire stage.</div>
+          </div>
+        </div>
+
+        <div class="concept-item">
+          <div class="concept-num">03</div>
+          <div class="concept-item-inner">
+            <div class="concept-item-title">FLORAL ARRANGEMENTS — ORGANIC SPILL STYLE</div>
+            <div class="concept-item-desc">Rich, dense floral arrangements predominantly in shades of white, cream, and muted ivory, arranged in an organic, overflowing spill composition.</div>
+          </div>
+        </div>
+
+        <div class="concept-item">
+          <div class="concept-num">04</div>
+          <div class="concept-item-inner">
+            <div class="concept-item-title">CHANDELIER</div>
+            <div class="concept-item-desc">Instead of identical sizes, please use a mix of large and medium-sized crystal chandeliers to create visual depth and a more dynamic, layered ceiling presence.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </div>
-  
+
 <!-- ====== HALLWAY ====== -->
 <div style="background:#0a0806; padding: 100px 60px;">
   <div style="max-width:1400px; margin:0 auto;">
@@ -641,7 +746,7 @@
 <!-- ====== CLOSING ====== -->
 <section class="closing">
   <div class="closing-quote">
-    "Ivory drapery cascading from above, soft candlelight flickering through the room, 
+    "Ivory drapery cascading from above, soft candlelight flickering through the room,
     cherubs quietly watching over a night filled with love and devotion."
   </div>
   <div class="closing-names">Herman & Vindy</div>
